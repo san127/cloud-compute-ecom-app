@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
+import { formatRupee } from '../lib/price'
 
 export default function ProductPage({ products, onAddToCart }) {
   const { id } = useParams()
@@ -25,7 +26,7 @@ export default function ProductPage({ products, onAddToCart }) {
           <h2>{product.name}</h2>
           <p>{product.description}</p>
           <div className="price-row">
-            <strong>${product.price}</strong>
+            <strong>{formatRupee(product.price)}</strong>
             <button onClick={() => onAddToCart(product)}>Add to cart</button>
           </div>
         </div>

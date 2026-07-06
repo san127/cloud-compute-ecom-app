@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { supabase, isSupabaseConnected } from './supabase'
 
 const fallbackProducts = [
   {
@@ -93,16 +93,8 @@ const fallbackProducts = [
   },
 ]
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-const supabase =
-  supabaseUrl && supabaseAnonKey && supabaseUrl.startsWith('https://')
-    ? createClient(supabaseUrl, supabaseAnonKey)
-    : null
-
 export async function fetchProducts() {
-  if (supabase) {
+  if (isSupabaseConnected()) {
     const { data, error } = await supabase.from('products').select('*').order('id')
 
     if (!error && Array.isArray(data) && data.length > 0) {

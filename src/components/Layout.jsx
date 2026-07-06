@@ -6,7 +6,7 @@ export default function Layout({ children, cartCount }) {
       <header className="topbar">
         <div>
           <p className="eyebrow">Bright picks • bold style</p>
-          <h1>Yellow & Black Market</h1>
+          <h1>WebComm</h1>
         </div>
         <nav className="nav-links">
           <NavLink to="/">Shop</NavLink>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { formatRupee } from '../lib/price'
 
 const categories = ['tech', 'lifestyle', 'home', 'food']
 
@@ -18,7 +19,7 @@ export default function HomePage({ products, activeCategory, onChangeCategory })
             Discover ten standout products across tech, lifestyle, home, and food.
           </p>
         </div>
-        <div className="hero-badge">Free shipping over $100</div>
+        <div className="hero-badge">Free shipping over ₹1000</div>
       </div>
 
       <div className="filters">
@@ -45,7 +46,7 @@ export default function HomePage({ products, activeCategory, onChangeCategory })
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <div className="product-card-footer">
-                <strong>${product.price}</strong>
+                <strong>{formatRupee(product.price)}</strong>
                 <Link to={`/product/${product.id}`}>View details</Link>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { formatRupee } from '../lib/price'
 
 export default function CartPage({ cartItems, onUpdateQuantity, onRemoveItem }) {
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
@@ -21,7 +22,7 @@ export default function CartPage({ cartItems, onUpdateQuantity, onRemoveItem }) 
             <img src={item.image} alt={item.name} />
             <div>
               <h3>{item.name}</h3>
-              <p>${item.price}</p>
+              <p>{formatRupee(item.price)}</p>
             </div>
             <div className="quantity-controls">
               <button onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}>-</button>
@@ -37,7 +38,7 @@ export default function CartPage({ cartItems, onUpdateQuantity, onRemoveItem }) 
       <aside className="checkout-card">
         <h3>Order summary</h3>
         <p>Total amount to pay</p>
-        <h2>${total.toFixed(2)}</h2>
+        <h2>{formatRupee(total)}</h2>
         <button className="checkout-btn">Checkout</button>
       </aside>
     </section>
