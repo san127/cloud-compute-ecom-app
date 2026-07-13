@@ -1,0 +1,15 @@
+{
+  "name": "goods4you-root",
+  "version": "1.0.0",
+  "description": "Root orchestrator for running Goods4you microservices locally without Docker",
+  "scripts": {
+    "install-all": "npm install && npm install --prefix product-service && npm install --prefix order-service && npm install --prefix frontend",
+    "start-product": "npm run start --prefix product-service",
+    "start-order": "npm run start --prefix order-service",
+    "start-frontend": "npm run dev --prefix frontend",
+    "dev": "concurrently --kill-others \"npm run start-product\" \"npm run start-order\" \"npm run start-frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
